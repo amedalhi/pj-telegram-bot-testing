@@ -9,7 +9,6 @@ app.use(express.json());
 
 //routes
 app.post("*", async (req, res) => {
-  console.log(req.body);
   res.send(await handler(req, "POST"));
 });
 
