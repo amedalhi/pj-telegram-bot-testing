@@ -3,17 +3,17 @@ import axios from "axios";
 const getAxiosInstance = (BASE_URL, headers = {}) => {
   return {
     get(method, params) {
-      return axios.get(`/${method}`, {
+      return axios.get(`${method}`, {
         baseURL: BASE_URL,
         params,
         headers,
       });
     },
-    post(method, params) {
+    post(method, data) {
       return axios({
         method: "post",
         baseURL: BASE_URL,
-        url: `/${method}`,
+        url: `${method}`,
         data,
         headers,
       });
