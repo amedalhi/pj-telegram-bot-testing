@@ -43,7 +43,7 @@ const handleMessage = async (messageObj) => {
       const commandMatch = messageText.match(/^\/(\w+)(@\w+)?\b/);
       if (!commandMatch) return sendMessage(chatId, "Invalid command format.");
 
-      const command = messageText.substr(1);
+      const command = commandMatch[1].toLowerCase(); // The command without the bot username
 
       switch (command) {
         case "start":
