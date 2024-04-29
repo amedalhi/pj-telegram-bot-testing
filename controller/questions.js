@@ -9,11 +9,12 @@ const QUESTIONS = [
 ];
 
 const questionTemplate = `
-  Please enter the following:
+  Enter the following:
   Product Name: _____
+  Bottle Size: _____
   Lot Code: _____
   Bin Location: _____
-  Add or subtract product?: _____
+  Add/Subtract: _____
   Quantity: _____
 `;
 
