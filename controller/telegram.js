@@ -32,28 +32,34 @@ const handleMessage = async (messageObj) => {
   const chatId = messageObj.chat.id;
 
   try {
-    if (messageText.charAt(0) === "/") {
-      // Extract command using regex to handle possible @username
-      const commandMatch = messageText.match(/^\/(\w+)(@\w+)?\b/);
-      if (!commandMatch) return sendMessage(chatId, "Invalid command format.");
+    //check if group is allowed
+    if (chatId === "-1002086418185") {
+      if (messageText.charAt(0) === "/") {
+        // Extract command using regex to handle possible @username
+        const commandMatch = messageText.match(/^\/(\w+)(@\w+)?\b/);
+        if (!commandMatch)
+          return sendMessage(chatId, "Invalid command format.");
 
-      const command = commandMatch[1].toLowerCase(); // The command without the bot username
+        const command = commandMatch[1].toLowerCase(); // The command without the bot username
 
-      switch (command) {
-        case "start":
-          //we want to send a welcome message
-          return sendMessage(
-            chatId,
-            "Hi! I'm a Pressed Bot. I can help you log transfers. Please type /transfer to start."
-          );
-        case "transfer":
-          return sendMessage(chatId, questionTemplate);
-        default:
-          return sendMessage(
-            chatId,
-            "Sorry, I don't understand. Type /start to get started."
-          );
+        switch (command) {
+          case "start":
+            //we want to send a welcome message
+            return sendMessage(
+              chatId,
+              "Hi! I'm a Pressed Bot. I can help you log transfers. Please type /transfer to start."
+            );
+          case "transfer":
+            return sendMessage(chatId, questionTemplate);
+          default:
+            return sendMessage(
+              chatId,
+              "Sorry, I don't understand. Type /start to get started."
+            );
+        }
       }
+    } else {
+      return sendMessage(chatID, "Sorry this bot is only not availble.");
     }
   } catch (error) {
     errorHandler(error, "handleMessage");
