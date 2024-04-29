@@ -35,10 +35,16 @@ const handleMessage = async (messageObj) => {
     return "";
   }
 
+  const chatId = messageObj.chat.id;
+
   try {
-    const chatId = messageObj.chat.id;
     if (messageText.charAt(0) === "/") {
+      // Extract command using regex to handle possible @username
+      const commandMatch = messageText.match(/^\/(\w+)(@\w+)?\b/);
+      if (!commandMatch) return sendMessage(chatId, "Invalid command format.");
+
       const command = messageText.substr(1);
+
       switch (command) {
         case "start":
           //we want to send a welcome message
