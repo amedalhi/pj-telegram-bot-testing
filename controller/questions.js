@@ -8,6 +8,15 @@ const QUESTIONS = [
   "Quantity: ",
 ];
 
+const questionTemplate = `
+  Please enter the following,
+  Product Name: ______________
+  Lot Code: ______________
+  Bin Location: ______________
+  Do you need to add or subtract product?: ______________
+  Quantity: ______________
+`;
+
 const updateChatState = function (chatId, nextQuestionIndex) {
   chatStates[chatId] = nextQuestionIndex;
 };
@@ -20,4 +29,11 @@ const clearChatState = function (chatId) {
   delete chatStates[chatId];
 };
 
-export { chatStates, QUESTIONS, updateChatState, getChatState, clearChatState };
+export {
+  chatStates,
+  QUESTIONS,
+  updateChatState,
+  getChatState,
+  clearChatState,
+  questionTemplate,
+};

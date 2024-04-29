@@ -4,13 +4,7 @@ import "dotenv/config";
 //imports
 import { getAxiosInstance } from "../controller/axios.js";
 import { errorHandler } from "../controller/helper.js";
-import {
-  chatStates,
-  QUESTIONS,
-  updateChatState,
-  getChatState,
-  clearChatState,
-} from "../controller/questions.js";
+import { questionTemplate } from "../controller/questions.js";
 
 //vars
 const MY_TOKEN = process.env.API_TOKEN;
@@ -54,24 +48,12 @@ const handleMessage = async (messageObj) => {
           );
         case "transfer":
           updateChatState(chatId, 0);
-          return sendMessage(chatId, QUESTIONS[0]);
+          return sendMessage(chatId, questionTemplate);
         default:
           return sendMessage(
             chatId,
             "Sorry, I don't understand. Type /start to get started."
           );
-      }
-    } else {
-      // Handling responses to questions
-      const currentState = getChatState(chatId);
-      if (currentState !== undefined) {
-        if (currentState + 1 < QUESTIONS.length) {
-          updateChatState(chatId, currentState + 1);
-          return sendMessage(chatId, QUESTIONS[currentState + 1]);
-        } else {
-          clearChatState(chatId); // End of questions
-          return sendMessage(chatId, "Thanks for providing all the info!");
-        }
       }
     }
   } catch (error) {
