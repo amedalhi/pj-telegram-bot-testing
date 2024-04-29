@@ -47,7 +47,6 @@ const handleMessage = async (messageObj) => {
             "Hi! I'm a Pressed Bot. I can help you log transfers. Please type /transfer to start."
           );
         case "transfer":
-          updateChatState(chatId, 0);
           return sendMessage(chatId, questionTemplate);
         default:
           return sendMessage(
