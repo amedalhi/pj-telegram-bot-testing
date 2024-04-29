@@ -29,9 +29,6 @@ const sendMessage = (chatId, messageText) => {
 };
 
 const handleMessage = async (messageObj) => {
-  const commandMatch = messageText.match(/^\/(\w+)(@\w+)?\b/);
-  if (!commandMatch) return sendMessage(chatId, "Invalid command format.");
-
   const messageText = messageObj.text || "";
   if (!messageText) {
     errorHandler("No message text", "handleMessage", "telegram");
