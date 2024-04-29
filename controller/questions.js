@@ -9,12 +9,12 @@ const QUESTIONS = [
 ];
 
 const questionTemplate = `
-  Please enter the following,
-  Product Name: ______________
-  Lot Code: ______________
-  Bin Location: ______________
-  Do you need to add or subtract product?: ______________
-  Quantity: ______________
+  Please enter the following:
+  Product Name: _____
+  Lot Code: _____
+  Bin Location: _____
+  Add or subtract product?: _____
+  Quantity: _____
 `;
 
 const updateChatState = function (chatId, nextQuestionIndex) {
